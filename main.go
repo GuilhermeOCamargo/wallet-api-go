@@ -18,8 +18,8 @@ func main() {
 
 	// Inicie o servidor
 	port := ":8080"
-	log.Printf("Starting server on %s", port)
+	log.Printf("Iniciando servidor na porta %s", port)
 	if err := r.Run(port); err != nil {
-		log.Fatalf("Failed to start server: %s", err)
+		log.Fatalf("Falha ao iniciar o servidor: %s", err)
 	}
 }

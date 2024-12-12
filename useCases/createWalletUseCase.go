@@ -1,6 +1,8 @@
-package usecases
+package useCases
 
 import (
+	"log"
+
 	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
 	"github.com/GuilhermeOCamargo/go-wallet-api/services"
 )
@@ -22,6 +24,7 @@ func NewCreateWalletUseCase(walletService services.WalletService, ownerService s
 }
 
 func (w *createWalletUseCaseImpl) Execute(wallet models.Wallet) (models.Wallet, error) {
+	log.Println("Iniciando Execute", wallet)
 	//TODO alguma coisa
-	return models.Wallet{}, nil
+	return wallet, nil
 }

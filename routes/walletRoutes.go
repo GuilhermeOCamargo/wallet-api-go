@@ -7,4 +7,5 @@ import (
 
 func WalletRoutes(router *gin.RouterGroup, walletController controllers.WalletController) {
 	router.POST("/wallet", walletController.CreateWallet)
+	router.GET("/wallet/id/:id", walletController.GetWalletById)
 }

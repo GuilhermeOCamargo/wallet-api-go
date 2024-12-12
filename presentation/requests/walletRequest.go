@@ -10,12 +10,6 @@ type WalletRequest struct {
 }
 
 func (w *WalletRequest) ToDomain() models.Wallet {
-	owner := models.Owner{
-		DocumentNumber: w.DocumentNumber,
-		Name:           w.Name,
-	}
-	return models.Wallet{
-		Owner:                owner,
-		BalanceAmountInCents: 0,
-	}
+	owner := models.NewOwner(w.DocumentNumber, w.Name)
+	return models.NewWallet(*owner, 0)
 }
