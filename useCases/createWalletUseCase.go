@@ -8,7 +8,7 @@ import (
 )
 
 type CreateWalletUseCase interface {
-	Execute(wallet models.Wallet) (models.Wallet, error)
+	Execute(wallet *models.Wallet) error
 }
 
 type createWalletUseCaseImpl struct {
@@ -23,8 +23,19 @@ func NewCreateWalletUseCase(walletService services.WalletService, ownerService s
 	}
 }
 
-func (w *createWalletUseCaseImpl) Execute(wallet models.Wallet) (models.Wallet, error) {
-	log.Println("Iniciando Execute", wallet)
-	//TODO alguma coisa
-	return wallet, nil
+func (w *createWalletUseCaseImpl) Execute(wallet *models.Wallet) error {
+	log.Println("createWalletUseCaseImpl - Iniciando Execute", wallet)
+	owner := wallet.Owner()
+	if err := w.ownerService.CreateOwner(owner); err != nil {
+
+		return err
+	}
+
+	log.Println("createWalletUseCaseImpl - owner criado. iniciando criação da wallet", owner)
+	if err := w.walletService.CreateWallet(wallet); err != nil {
+		return err
+	}
+
+	log.Println("createWalletUseCaseImpl - Wallet criada com sucesso", wallet)
+	return nil
 }

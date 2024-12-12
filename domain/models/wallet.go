@@ -1,26 +1,42 @@
 package models
 
+import "time"
+
 type Wallet struct {
-	id                   string
-	owner                Owner
+	id                   uint
+	owner                *Owner
 	balanceAmountInCents int
+	createdAt            time.Time
+	updatedAt            time.Time
 }
 
-func NewWallet(owner Owner, balanceAmountInCents int) Wallet {
+func NewWallet(owner *Owner, balanceAmountInCents int) Wallet {
 	return Wallet{
 		owner:                owner,
 		balanceAmountInCents: balanceAmountInCents,
 	}
 }
 
-func (w Wallet) GetId() string {
+func (w Wallet) Id() uint {
 	return w.id
 }
 
-func (w Wallet) GetOwner() Owner {
+func (w Wallet) Owner() *Owner {
 	return w.owner
 }
 
-func (w Wallet) GetBalanceAmountInCents() int {
+func (w Wallet) BalanceAmountInCents() int {
 	return w.balanceAmountInCents
+}
+
+func (w *Wallet) SetId(id uint) {
+	w.id = id
+}
+
+func (w *Wallet) SetCreatedAt(createdAt time.Time) {
+	w.createdAt = createdAt
+}
+
+func (w *Wallet) SetUpdatedAt(updatedAt time.Time) {
+	w.updatedAt = updatedAt
 }

@@ -11,5 +11,5 @@ type WalletRequest struct {
 
 func (w *WalletRequest) ToDomain() models.Wallet {
 	owner := models.NewOwner(w.DocumentNumber, w.Name)
-	return models.NewWallet(*owner, 0)
+	return models.NewWallet(owner, 0)
 }

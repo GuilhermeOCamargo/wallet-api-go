@@ -3,13 +3,15 @@ package main
 import (
 	"log"
 
-	"github.com/GuilhermeOCamargo/go-wallet-api/di"
+	"github.com/GuilhermeOCamargo/go-wallet-api/config/database"
+	"github.com/GuilhermeOCamargo/go-wallet-api/config/di"
 	"github.com/GuilhermeOCamargo/go-wallet-api/routes"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
+	database.ConnectDb()
 
 	walletController := di.Initialize()
 

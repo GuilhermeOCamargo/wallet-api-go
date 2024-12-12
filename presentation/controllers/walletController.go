@@ -34,8 +34,8 @@ func (w walletControllerImpl) CreateWallet(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, err.Error())
 		return
 	}
-	wallet, err := w.createWalletUseCase.Execute(request.ToDomain())
-	if err != nil {
+	wallet := request.ToDomain()
+	if err := w.createWalletUseCase.Execute(&wallet); err != nil {
 		log.Panicln("Erro ao criar nova wallet", err.Error())
 		c.JSON(http.StatusInternalServerError, err.Error())
 		return
@@ -46,6 +46,6 @@ func (w walletControllerImpl) CreateWallet(c *gin.Context) {
 
 func (w walletControllerImpl) GetWalletById(c *gin.Context) {
 	// id := c.Params.ByName("id")
-	wallet := models.NewWallet(*models.NewOwner("name", "document"), 0)
+	wallet := models.NewWallet(models.NewOwner("name", "document"), 0)
 	c.JSON(http.StatusOK, responses.NewWalletResponse(wallet))
 }
