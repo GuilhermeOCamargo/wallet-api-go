@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/entities"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/entities"
 	"gorm.io/gorm"
 )
 

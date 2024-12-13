@@ -2,11 +2,11 @@ package di
 
 import (
 	"github.com/GuilhermeOCamargo/go-wallet-api/config/database"
-	"github.com/GuilhermeOCamargo/go-wallet-api/presentation/controllers"
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/adapters"
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/postgres"
-	"github.com/GuilhermeOCamargo/go-wallet-api/services"
-	"github.com/GuilhermeOCamargo/go-wallet-api/useCases"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/controllers"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/adapters"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/postgres"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/services"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/useCases"
 )
 
 func Initialize() controllers.WalletController {

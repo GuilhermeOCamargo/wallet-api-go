@@ -3,9 +3,9 @@ package adapters
 import (
 	"log"
 
-	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/entities"
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/postgres"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/entities"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/postgres"
 )
 
 type WalletAdapter interface {

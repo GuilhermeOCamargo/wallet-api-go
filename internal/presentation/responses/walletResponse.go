@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
+import "github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
 
 type WalletResponse struct {
 	Id                   uint   `json:"id"`

@@ -1,15 +1,18 @@
 package controllers
 
 import (
+	"errors"
 	"log"
 	"net/http"
 
-	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/presentation/requests"
-	"github.com/GuilhermeOCamargo/go-wallet-api/presentation/responses"
-	"github.com/GuilhermeOCamargo/go-wallet-api/useCases"
+	apperrors "github.com/GuilhermeOCamargo/go-wallet-api/internal/appErrors"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/requests"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/responses"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/useCases"
 	"github.com/gin-gonic/gin"
 )
+
+var ce *apperrors.CodeError
 
 type WalletController interface {
 	CreateWallet(c *gin.Context)
@@ -36,8 +39,12 @@ func (w walletControllerImpl) CreateWallet(c *gin.Context) {
 	}
 	wallet := request.ToDomain()
 	if err := w.createWalletUseCase.Execute(&wallet); err != nil {
-		log.Panicln("Erro ao criar nova wallet", err.Error())
-		c.JSON(http.StatusInternalServerError, err.Error())
+		log.Println("Erro ao criar nova wallet", err.Error())
+		status := 500
+		if errors.As(err, &ce) {
+			status = err.(*apperrors.CodeError).Status
+		}
+		c.JSON(status, err.Error())
 		return
 	}
 	log.Println("Wallet criada com sucesso", wallet)
@@ -46,6 +53,6 @@ func (w walletControllerImpl) CreateWallet(c *gin.Context) {
 
 func (w walletControllerImpl) GetWalletById(c *gin.Context) {
 	// id := c.Params.ByName("id")
-	wallet := models.NewWallet(models.NewOwner("name", "document"), 0)
-	c.JSON(http.StatusOK, responses.NewWalletResponse(wallet))
+	// wallet := models.NewWallet(models.NewOwner("name", "document"), 0)
+	// c.JSON(http.StatusOK, responses.NewWalletResponse(wallet))
 }

@@ -3,7 +3,7 @@ package database
 import (
 	"log"
 
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/entities"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/entities"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

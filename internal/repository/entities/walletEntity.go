@@ -1,7 +1,7 @@
 package entities
 
 import (
-	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
 	"gorm.io/gorm"
 )
 

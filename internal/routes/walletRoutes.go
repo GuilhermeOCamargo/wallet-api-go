@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/GuilhermeOCamargo/go-wallet-api/presentation/controllers"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/controllers"
 	"github.com/gin-gonic/gin"
 )
 

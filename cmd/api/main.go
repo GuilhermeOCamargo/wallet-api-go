@@ -18,7 +18,6 @@ func main() {
 	api := r.Group("/api")
 	routes.WalletRoutes(api, walletController)
 
-	// Inicie o servidor
 	port := ":8080"
 	log.Printf("Iniciando servidor na porta %s", port)
 	if err := r.Run(port); err != nil {

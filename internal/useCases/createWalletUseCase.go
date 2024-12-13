@@ -3,8 +3,8 @@ package useCases
 import (
 	"log"
 
-	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/services"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/services"
 )
 
 type CreateWalletUseCase interface {

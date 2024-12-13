@@ -10,10 +10,13 @@ type Owner struct {
 	updatedAt      time.Time
 }
 
-func NewOwner(name, documentNumber string) *Owner {
+func NewOwner(name, documentNumber string, id uint, createdAt, updatedAt time.Time) *Owner {
 	return &Owner{
+		id:             id,
 		name:           name,
 		documentNumber: documentNumber,
+		createdAt:      createdAt,
+		updatedAt:      updatedAt,
 	}
 }
 

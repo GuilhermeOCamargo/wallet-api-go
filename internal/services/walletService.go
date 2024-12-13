@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/GuilhermeOCamargo/go-wallet-api/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/repository/adapters"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/adapters"
 )
 
 type WalletService interface {
