@@ -7,6 +7,7 @@ import (
 
 type WalletRepository interface {
 	CreateWallet(*entities.Wallet)
+	FindWalletById(string) (*entities.Wallet, error)
 }
 
 type walletRepositoryImpl struct {
@@ -17,6 +18,12 @@ func NewWalletRepository(db *gorm.DB) WalletRepository {
 	return &walletRepositoryImpl{db: db}
 }
 
-func (w *walletRepositoryImpl) CreateWallet(e *entities.Wallet) {
-	w.db.Create(&e)
+func (r *walletRepositoryImpl) CreateWallet(e *entities.Wallet) {
+	r.db.Create(&e)
+}
+
+func (r *walletRepositoryImpl) FindWalletById(id string) (*entities.Wallet, error) {
+	var wallet entities.Wallet
+	r.db.First(&wallet, id)
+	return &wallet, nil
 }

@@ -1,24 +1,22 @@
-package services
+package service
 
 import (
 	"errors"
 
 	apperrors "github.com/GuilhermeOCamargo/go-wallet-api/internal/appErrors"
 	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/adapters"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/repository/adapter"
 )
-
-var ce *apperrors.CodeError
 
 type OwnerService interface {
 	CreateOwner(o *models.Owner) error
 }
 
 type ownerServiceImpl struct {
-	adapter adapters.OwnerAdapter
+	adapter adapter.OwnerAdapter
 }
 
-func NewOwnerService(adapter adapters.OwnerAdapter) OwnerService {
+func NewOwnerService(adapter adapter.OwnerAdapter) OwnerService {
 	return &ownerServiceImpl{
 		adapter: adapter,
 	}
@@ -45,6 +43,7 @@ func (s *ownerServiceImpl) findOwnerByDocumentNumber(documentNumber string) (*mo
 
 func (s *ownerServiceImpl) canCreateOwner(o *models.Owner) bool {
 	_, err := s.findOwnerByDocumentNumber(o.DocumentNumber())
+	var ce *apperrors.CodeError
 	if err != nil && errors.As(err, &ce) {
 		return true
 	}

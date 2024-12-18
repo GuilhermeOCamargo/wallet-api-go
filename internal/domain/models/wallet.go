@@ -10,10 +10,20 @@ type Wallet struct {
 	updatedAt            time.Time
 }
 
-func NewWallet(owner *Owner, balanceAmountInCents int) Wallet {
-	return Wallet{
+func NewWalletWithOwnerAndBalance(owner *Owner, balanceAmountInCents int) *Wallet {
+	return &Wallet{
 		owner:                owner,
 		balanceAmountInCents: balanceAmountInCents,
+	}
+}
+
+func NewWallet(owner *Owner, balanceAmountInCents int, id uint, createdAt, updatedAt time.Time) *Wallet {
+	return &Wallet{
+		owner:                owner,
+		balanceAmountInCents: balanceAmountInCents,
+		id:                   id,
+		createdAt:            createdAt,
+		updatedAt:            updatedAt,
 	}
 }
 

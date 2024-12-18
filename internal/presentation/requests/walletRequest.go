@@ -15,7 +15,7 @@ type WalletRequest struct {
 	UpdatedAt            time.Time `json:"updatedAt"`
 }
 
-func (w *WalletRequest) ToDomain() models.Wallet {
+func (w *WalletRequest) ToDomain() *models.Wallet {
 	owner := models.NewOwner(w.DocumentNumber, w.Name, w.Id, w.CreatedAt, w.UpdatedAt)
-	return models.NewWallet(owner, 0)
+	return models.NewWalletWithOwnerAndBalance(owner, 0)
 }

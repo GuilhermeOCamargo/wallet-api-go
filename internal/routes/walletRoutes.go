@@ -1,11 +1,10 @@
 package routes
 
 import (
-	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/controllers"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/presentation/controller"
 	"github.com/gin-gonic/gin"
 )
 
-func WalletRoutes(router *gin.RouterGroup, walletController controllers.WalletController) {
+func WalletRoutes(router *gin.RouterGroup, walletController controller.WalletController) {
 	router.POST("/wallet", walletController.CreateWallet)
-	router.GET("/wallet/id/:id", walletController.GetWalletById)
 }

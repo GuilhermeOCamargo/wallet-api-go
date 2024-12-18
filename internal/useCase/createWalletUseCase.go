@@ -1,10 +1,10 @@
-package useCases
+package useCase
 
 import (
 	"log"
 
 	"github.com/GuilhermeOCamargo/go-wallet-api/internal/domain/models"
-	"github.com/GuilhermeOCamargo/go-wallet-api/internal/services"
+	"github.com/GuilhermeOCamargo/go-wallet-api/internal/service"
 )
 
 type CreateWalletUseCase interface {
@@ -12,11 +12,11 @@ type CreateWalletUseCase interface {
 }
 
 type createWalletUseCaseImpl struct {
-	walletService services.WalletService
-	ownerService  services.OwnerService
+	walletService service.WalletService
+	ownerService  service.OwnerService
 }
 
-func NewCreateWalletUseCase(walletService services.WalletService, ownerService services.OwnerService) CreateWalletUseCase {
+func NewCreateWalletUseCase(walletService service.WalletService, ownerService service.OwnerService) CreateWalletUseCase {
 	return &createWalletUseCaseImpl{
 		walletService: walletService,
 		ownerService:  ownerService,

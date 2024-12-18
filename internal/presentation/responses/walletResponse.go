@@ -9,7 +9,7 @@ type WalletResponse struct {
 	DocumentNumber       string `json:"documentNumber"`
 }
 
-func NewWalletResponse(w models.Wallet) *WalletResponse {
+func NewWalletResponse(w *models.Wallet) *WalletResponse {
 	return &WalletResponse{
 		Id:                   w.Id(),
 		BalanceAmountInCents: w.BalanceAmountInCents(),

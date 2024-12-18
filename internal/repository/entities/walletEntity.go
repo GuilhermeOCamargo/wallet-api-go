@@ -14,7 +14,16 @@ type Wallet struct {
 
 func NewWallet(w *models.Wallet) *Wallet {
 	return &Wallet{
+		OwnerID:              w.Owner().Id(),
 		Owner:                NewOwner(w.Owner()),
 		BalanceAmountInCents: w.BalanceAmountInCents(),
 	}
+}
+
+func (w *Wallet) Id() uint {
+	return w.ID
+}
+
+func (w *Wallet) ToDomain() *models.Wallet {
+	return models.NewWallet(w.Owner.ToDomain(), w.BalanceAmountInCents, w.ID, w.CreatedAt, w.UpdatedAt)
 }
